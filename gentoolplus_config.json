@@ -1,9 +1,9 @@
 {
     "version": "1.0",
     "database": {
-        "dbDriver": "mysql",
-        "dbName": "sqltest",
-        "dsn": "user:pwd@tcp(localhost:3306)/sqltest?charset=utf8mb4&parseTime=True&loc=Local",
+        "dbDriver": "postgres",
+        "dbName": "controller",
+        "dsn": "postgres://root:root@localhost:5432/controller?sslmode=disable",
         "outPath": "./dao/query",
         "outFile": "gentoolplus.go",
         "nspname": "public",
@@ -15,39 +15,13 @@
             "int": "int64"
         },
         "fieldNullable": true,
-        "fieldCoverable": true,
+        "fieldCoverable": false,
         "fieldSignable": false,
         "fieldWithIndexTag": false,
         "fieldWithTypeTag": false,
         "withUnitTest": false,
         "singularTable": true,
-        "modelPkgPath": "model",
-        "tables": [],
-        "belongstoTables": {
-            "staff": [
-                "department"
-            ],
-            "user": [
-                "company"
-            ],
-            "address": [
-                "company"
-            ]
-        },
-        "hasoneTables": {
-            "user": [
-                "staff"
-            ]
-        },
-        "many2manyTables": {
-            "staff_role": [
-                "staff",
-                "role"
-            ],
-            "user_languages": [
-                "user",
-                "language"
-            ]
-        }
+        "modelPkgPath": "entity",
+        "tables": []
     }
 }

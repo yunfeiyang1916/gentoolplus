@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/essrt/gentoolplus/common"
 	"github.com/essrt/gentoolplus/global"
@@ -96,6 +97,12 @@ func ProcessTableRelations() {
 		global.DB.Raw("USE " + *global.DbName + "; SELECT t.name AS TABLE_NAME, col.name AS COLUMN_NAME, fk.name AS ForeignKeyName, ref.name AS REFERENCED_TABLE_NAME, refCol.name AS REFERENCED_COLUMN_NAME FROM sys.tables AS t INNER JOIN sys.foreign_keys AS fk ON t.object_id = fk.parent_object_id INNER JOIN sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id INNER JOIN sys.columns AS col ON fkc.parent_column_id = col.column_id AND fkc.parent_object_id = col.object_id INNER JOIN sys.tables AS ref ON fk.referenced_object_id = ref.object_id INNER JOIN sys.columns AS refCol ON fkc.referenced_column_id = refCol.column_id AND fkc.referenced_object_id = refCol.object_id;").Scan(&relationList)
 	} else {
 		panic(fmt.Errorf("不支持的数据库类型: %s", *global.DbDriver))
+	}
+
+	// 处理表名，将双引号移除
+	for i := 0; i < len(relationList); i++ {
+		relationList[i].TABLE_NAME = strings.TrimRight(strings.TrimLeft(relationList[i].TABLE_NAME, `"`), `"`)
+		relationList[i].REFERENCED_TABLE_NAME = strings.TrimRight(strings.TrimLeft(relationList[i].REFERENCED_TABLE_NAME, `"`), `"`)
 	}
 
 	// hasOne关系列表
@@ -192,7 +199,6 @@ func ProcessTableRelations() {
 
 	if config.Many2manyTables != nil {
 		for middleTable, v := range config.Many2manyTables {
-
 			st2 := common.SubTable{
 				TABLE_NAME:               v[1],                   //子表名
 				TABLE_NAME_UP:            utils.Case2Camel(v[1]), //将子表名下划线去掉，转换成首字母大写
