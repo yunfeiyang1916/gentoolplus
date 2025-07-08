@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/essrt/gentoolplus/global"
-	"github.com/essrt/gentoolplus/utils"
+	"gentoolplus/global"
+	"gentoolplus/utils"
 	"github.com/spf13/viper"
 )
 

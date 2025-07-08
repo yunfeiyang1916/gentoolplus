@@ -1,7 +1,7 @@
 package global
 
 import (
-	"github.com/essrt/gentoolplus/common"
+	"gentoolplus/common"
 	"gorm.io/gorm"
 )
 

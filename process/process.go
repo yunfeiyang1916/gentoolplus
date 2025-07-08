@@ -6,9 +6,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/essrt/gentoolplus/common"
-	"github.com/essrt/gentoolplus/global"
-	"github.com/essrt/gentoolplus/utils"
+	"gentoolplus/common"
+	"gentoolplus/global"
+	"gentoolplus/utils"
 	"gorm.io/gen"
 	"gorm.io/gen/field"
 )

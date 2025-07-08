@@ -5,8 +5,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/essrt/gentoolplus/global"
-	"github.com/essrt/gentoolplus/utils"
+	"gentoolplus/global"
+	"gentoolplus/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"

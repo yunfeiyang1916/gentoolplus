@@ -7,7 +7,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/essrt/gentoolplus/global"
+	"gentoolplus/global"
 )
 
 // 下划线写法转为驼峰写法
