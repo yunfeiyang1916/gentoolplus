@@ -1,10 +1,10 @@
 # gentoolplus
 Install（下载）：
 ```
-go get -u github.com/essrt/gentoolplus@V1.0.0
+go get -u github.com/yunfeiyang1916/gentoolplus@V1.0.0
 ```
 ```
-go install github.com/essrt/gentoolplus
+go install github.com/yunfeiyang1916/gentoolplus
 ```
 Useage（使用）：
 ```
