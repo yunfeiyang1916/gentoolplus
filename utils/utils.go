@@ -7,7 +7,7 @@ import (
 	"path"
 	"strings"
 
-	"gentoolplus/global"
+	"github.com/yunfeiyang1916/gentoolplus/global"
 )
 
 // 下划线写法转为驼峰写法

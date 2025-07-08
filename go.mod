@@ -1,4 +1,4 @@
-module gentoolplus
+module github.com/yunfeiyang1916/gentoolplus
 
 go 1.21.1
 

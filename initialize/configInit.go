@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"gentoolplus/global"
-	"gentoolplus/utils"
 	"github.com/spf13/viper"
+	"github.com/yunfeiyang1916/gentoolplus/global"
+	"github.com/yunfeiyang1916/gentoolplus/utils"
 )
 
 var helpFlag = flag.Bool("h", false, "帮助文档")

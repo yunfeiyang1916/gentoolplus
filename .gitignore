@@ -38,3 +38,4 @@ bin/
 *.swp
 go.sum
 dao/
+gen_tool_plus_tmp/

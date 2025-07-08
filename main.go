@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gentoolplus/process"
+	"github.com/yunfeiyang1916/gentoolplus/process"
 
-	_ "gentoolplus/initialize"
+	_ "github.com/yunfeiyang1916/gentoolplus/initialize"
 )
 
 func main() {

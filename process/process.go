@@ -6,9 +6,9 @@ import (
 	"log"
 	"strings"
 
-	"gentoolplus/common"
-	"gentoolplus/global"
-	"gentoolplus/utils"
+	"github.com/yunfeiyang1916/gentoolplus/common"
+	"github.com/yunfeiyang1916/gentoolplus/global"
+	"github.com/yunfeiyang1916/gentoolplus/utils"
 	"gorm.io/gen"
 	"gorm.io/gen/field"
 )

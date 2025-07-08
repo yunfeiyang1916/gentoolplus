@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"gentoolplus/global"
+	"github.com/yunfeiyang1916/gentoolplus/global"
 	"gorm.io/gen"
 	"gorm.io/gen/field"
 	"gorm.io/gorm"
