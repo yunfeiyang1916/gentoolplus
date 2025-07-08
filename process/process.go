@@ -238,7 +238,9 @@ func ProcessTableRelations() {
 	fmt.Println("=========主表 Map:::", utils.ToJson(tmp))
 
 	// 生成新的generator实例，用于通过数据库子表名称，创建子表的模型基本结构体（BaseStruct）
-	newGenerator := gen.NewGenerator(gen.Config{})
+	newGenerator := gen.NewGenerator(gen.Config{
+		ModelPkgPath: global.Config.Database.ModelPkgPath,
+	})
 	newGenerator.UseDB(global.DB)
 
 	fmt.Println("主表 Map:::", utils.ToJson(masterTableMap))
