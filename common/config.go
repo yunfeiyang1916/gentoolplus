@@ -2,6 +2,8 @@ package common
 
 import "gorm.io/gen/field"
 
+const Version = "1.0.2"
+
 type ConfigFile struct {
 	Version  string   `json:"version"`
 	Database DBConfig `json:"database"`

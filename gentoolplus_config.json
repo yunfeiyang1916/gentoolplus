@@ -1,18 +1,13 @@
 {
-    "version": "1.0",
+    "version": "1.0.2",
     "database": {
         "dbDriver": "postgres",
         "dbName": "controller",
         "dsn": "postgres://root:root@localhost:5432/controller?sslmode=disable",
-        "outPath": "./dao/query",
-        "outFile": "gentoolplus.go",
+        "outPath": "./biz/query",
+        "outFile": "gen.go",
         "nspname": "public",
         "dataMap": {
-            "tinyint": "int64",
-            "smallint": "int64",
-            "mediumint": "int64",
-            "bigint": "int64",
-            "int": "int64"
         },
         "fieldNullable": true,
         "fieldCoverable": false,
@@ -22,6 +17,25 @@
         "withUnitTest": false,
         "singularTable": true,
         "modelPkgPath": "entity",
-        "tables": []
+        "tables": [],
+        "belongstoTables": {
+            "site": [
+                "tenant"
+            ],
+            "sensor_session": [
+                "sensor"
+            ]
+        },
+        "hasoneTables": {
+            "sensor": [
+                "sensor_session"
+            ]
+        },
+        "many2manyTables": {
+            "study_site_mapping": [
+                "study",
+                "site"
+            ]
+        }
     }
 }

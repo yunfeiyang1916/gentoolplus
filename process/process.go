@@ -191,6 +191,8 @@ func ProcessTableRelations() {
 				REFERENCED_TABLE_NAME_UP: utils.Case2Camel(sub.TABLE_NAME),                              //将关联表名下划线去掉，转换成首字母大写
 				RELATION_TYPE:            field.BelongsTo,                                               //关联关系类型
 			}
+			// 关联的外键id,应该是子表名+子表id，例如：TenantID
+			st1.COLUMN_NAME_UP = st1.TABLE_NAME_UP + st1.COLUMN_NAME_UP
 			masterTableMap[sub.TABLE_NAME] = append(masterTableMap[sub.TABLE_NAME], st1)
 		} else {
 			masterTableMap[sub.REFERENCED_TABLE_NAME] = append(masterTableMap[sub.REFERENCED_TABLE_NAME], st)
@@ -254,7 +256,6 @@ func ProcessTableRelations() {
 			if subTable.RELATION_TYPE == field.Many2Many {
 				subModels = append(subModels, gen.FieldRelate(subTable.RELATION_TYPE, subTable.TABLE_NAME_UP, newGenerator.GenerateModel(subTable.TABLE_NAME),
 					&field.RelateConfig{
-						//
 						GORMTag: field.GormTag{"many2many": {subTable.MIDDLE_TABLE}},
 					}))
 			} else {

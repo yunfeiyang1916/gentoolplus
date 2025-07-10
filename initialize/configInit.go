@@ -5,12 +5,15 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/yunfeiyang1916/gentoolplus/common"
+
 	"github.com/spf13/viper"
 	"github.com/yunfeiyang1916/gentoolplus/global"
 	"github.com/yunfeiyang1916/gentoolplus/utils"
 )
 
 var helpFlag = flag.Bool("h", false, "帮助文档")
+var versionFlag = flag.Bool("v", false, "版本号")
 var configFile = flag.String("c", "", "配置文件路径")
 
 func initConfig() {
@@ -25,7 +28,12 @@ func initConfig() {
 	// 如果用户使用了 -h 参数，则显示帮助信息
 	if *helpFlag {
 		displayHelp()
-		return
+		os.Exit(0)
+	}
+	// 如果用户使用了 -v 参数，则显示版本号
+	if *versionFlag {
+		fmt.Println(common.Version)
+		os.Exit(0)
 	}
 
 	// 如果用户使用了 -c 参数，则读取配置文件
@@ -90,6 +98,9 @@ func readConfig(filename string) error {
 	if err != nil {
 		fmt.Println("读取配置失败")
 		return err
+	}
+	if global.Config.Version != common.Version {
+		panic(fmt.Sprintf("gentoolplus版本过低，请更新到%s版本", global.Config.Version))
 	}
 	return nil
 }
