@@ -2,7 +2,7 @@ package common
 
 import "gorm.io/gen/field"
 
-const Version = "1.0.2"
+const Version = "1.0.3"
 
 type ConfigFile struct {
 	Version  string   `json:"version"`

@@ -37,6 +37,13 @@ func InitGenGenerator() (g *gen.Generator, fieldOpts []gen.ModelOpt) {
 		// 生成模型代码包名称。默认值：model
 		ModelPkgPath: global.Config.Database.ModelPkgPath,
 	})
+	// 为所有字段移除default标签
+	g.WithOpts(gen.FieldGORMTagReg("(?s).*", func(tag field.GormTag) field.GormTag {
+		//tag.Set("default", "xxx") //modify default tag
+		tag.Remove("default") //remove default
+		return tag
+	}),
+	)
 	// 设置目标 db
 	g.UseDB(global.DB)
 
