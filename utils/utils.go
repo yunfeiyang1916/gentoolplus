@@ -90,12 +90,12 @@ func MoveGenFileBack() {
 
 	// 删除临时创建的gen_tool_plus_tmp文件夹
 	defer DeleteTmpDir()
-
-	if _, err := os.Stat(genFile); err != nil {
-		fmt.Println("moveGenFileBack:", genFile)
-		fmt.Println("gen.go文件不存在!", err)
-		return
-	}
+	// gen.go文件已经被移动到tmp文件夹下，因此这里不需要判断gen.go文件是否存在
+	//if _, err := os.Stat(genFile); err != nil {
+	//	fmt.Println("moveGenFileBack:", genFile)
+	//	fmt.Println("gen.go文件不存在!", err)
+	//	return
+	//}
 	err := os.Rename(path.Join(workDir, "gen_tool_plus_tmp", *global.OutFile), genFile)
 
 	if err != nil {
